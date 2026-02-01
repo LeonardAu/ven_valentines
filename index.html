@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hmm...</title>
+    <link rel="stylesheet" href="css/valentine.css" />
+  </head>
+  <body>
+    <div id="valentineQuestion">
+      <b
+        >Hi Baby! <br />
+        C-can I be you valentines?</b
+      >
+    </div>
+    <button class="answerButton" onclick="location.href = 'thankyou.html'">
+      Yes
+    </button>
+    <button class="answerButton" id="noButton">I dont wanna o(╥﹏╥)o</button>
+    <br />
+    <img src="cat.gif" alt="cat asking question" class="responsive" />
+
+    <script>
+      const noButton = document.getElementById("noButton");
+      const yesButton = document.querySelector(
+        'button[onclick*="thankyou.html"]',
+      );
+
+      const messages = [
+        "Are you sure?",
+        "What if I asked really nicely?",
+        "Pretty please",
+        "With a chocolate rice cake on top",
+        "What about a matcha frostie",
+        "PLEASE POOKIE",
+        "B-but :*(",
+        "I am going to die",
+        "Yep im dead",
+        "ok ur talking to leo's ghost",
+        "jk im alive",
+        "please my baby uwu 👉👈",
+        ":((((",
+        "PRETTY PLEASE",
+        "ILL DO ANYTHING",
+        "No :(",
+      ];
+
+      let i = 0;
+      let attempts = 0;
+
+      noButton.addEventListener("click", () => {
+        attempts++;
+
+        // change the No button text
+        noButton.textContent = messages[i];
+        i = (i + 1) % messages.length;
+
+        // grow the Yes button
+        const currentFontSize = parseInt(
+          getComputedStyle(yesButton).fontSize,
+          10,
+        );
+        yesButton.style.fontSize = currentFontSize + 25 + "px";
+
+        // after 30 attempts, hide the No button
+        if (attempts >= 30) {
+          noButton.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
